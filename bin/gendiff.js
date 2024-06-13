@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
 import * as path from 'path';
-import * as fs from 'node:fs';
 import gendiff from '../ src/gendiff-dif.js';
 
 program
@@ -11,9 +10,8 @@ program
   .argument('<filepath2>',)
   .option('-f, --format [type]', 'output format')
   .action((filepath1, filepath2) => {
-    // const arr = [path.resolve(filepath1), path.resolve(filepath2)];
-    // fs.openSync(path.resolve(filepath1));
-    console.log(gendiff(path.resolve(filepath1),path.resolve(filepath2)));
+    const result = gendiff(path.resolve(filepath1),path.resolve(filepath2));
+    console.log(result);
   });
 
 program.parse();
