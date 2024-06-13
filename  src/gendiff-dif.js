@@ -48,12 +48,12 @@ const genDiff = (filepath1, filepath2) => {
         if (!Object.hasOwn(file1, key)) {
             acc = { ...acc, [`+ ${key}`]: file2[key]};
         } else if (!Object.hasOwn(file2, key)) {
-            acc =  { ...acc, [`- ${key}`]: file1[key]};
+            acc = { ...acc, [`- ${key}`]: file1[key]};
         } else if (file1[key] !== file2[key]) {
-            acc =  { ...acc, [`- ${key}`]: file1[key]};
+            acc = { ...acc, [`- ${key}`]: file1[key]};
             acc = {... acc, [`+ ${key}`]: file2[key]};
         } else {
-            acc =  { ...acc, [`  ${key}`]: file1[key]};
+            acc = { ...acc, [`  ${key}`]: file1[key]};
         }
        
         return acc;
