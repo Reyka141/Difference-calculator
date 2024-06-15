@@ -1,7 +1,7 @@
 # Difference calculator
 
 ## Description
-Compares the first file with the second and outputs the result 
+Compares the first file with the second and outputs the result.
 
 ## Setup
 
@@ -15,5 +15,5 @@ npm link
 [![Test Coverage](https://api.codeclimate.com/v1/badges/75eb30ba15fecfc8901c/test_coverage)](https://codeclimate.com/github/Reyka141/frontend-project-46/test_coverage)
 
 
-### Video with install and play brain-even game
+### Programme operation video
 [![asciicast](https://asciinema.org/a/ejhnMrtsgsZ6PRaP0PgCYIlNL.svg)](https://asciinema.org/a/ejhnMrtsgsZ6PRaP0PgCYIlNL)
