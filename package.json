@@ -2,16 +2,28 @@
   "name": "@hexlet/difference-calculator",
   "version": "1.0.0",
   "description": "Compares the first .json file with the second and outputs the result",
-  "main": "bin/gendiff.js",
-  "scripts": {
-    "test": "npx jest"
-  },
-  "type": "module",
-  "author": "Andrii Veduta",
-  "license": "ISC",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
+  "main": "bin/gendiff.js",
+  "simple-git-hooks": {
+    "pre-push": "make lint"
+  },
+  "scripts": {
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reyka141/frontend-project-46"
+  },
+  "author": "Andrii Veduta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reyka141/frontend-project-46/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/Reyka141/frontend-project-46#readme",
+  
   "dependencies": {
     "commander": "^12.1.0",
     "lodash": "^4.17.21"

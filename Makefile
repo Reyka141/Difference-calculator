@@ -9,3 +9,5 @@ lint:	#Проверка линтером
 
 link: # Установка пакета
 	npm link
+
+.PHONY: test
