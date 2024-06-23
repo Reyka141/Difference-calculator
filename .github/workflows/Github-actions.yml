@@ -3,9 +3,7 @@
 
 name: Node.js Package
 
-on:
-  release:
-    types: [created]
+on: push
 
 jobs:
   build:
@@ -17,4 +15,5 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm test
+      - run: make lint
 
