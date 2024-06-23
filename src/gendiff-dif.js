@@ -7,25 +7,23 @@ const readingFile = (pathToFile) => {
     return JSON.parse(file);
 }
 
-const stringify = (value, replacer = '  ', spacesCount = 1) => {
+const stringify = (value) => {
     const iter = (currentValue, depth) => {
       // альтернативный вариант: (typeof currentValue !== 'object' || currentValue === null)
       if (!_.isObject(currentValue)) {
         return `${currentValue}`;
       }
   
-      const indentSize = depth * spacesCount;
-      const currentIndent = replacer.repeat(indentSize);
-      const bracketIndent = replacer.repeat(indentSize - spacesCount);
+      // const indentSize = depth * spacesCount;
+      // const currentIndent = replacer.repeat(indentSize);
+      // const bracketIndent = replacer.repeat(indentSize - spacesCount);
       const lines = Object
         .entries(currentValue)
-        .map(([key, val]) => `${currentIndent}${key}: ${iter(val, depth + 1)}`);
-        
-  
+        .map(([key, val]) => `  ${key}: ${iter(val, depth + 1)}`);
       return [
         '{',
         ...lines,
-        `${bracketIndent}}`,
+        `}`,
       ].join('\n');
     };
   
@@ -64,4 +62,5 @@ const genDiff = (filepath1, filepath2) => {
     return stringOfObject;
 }
 
+export { readingFile };
 export default genDiff;
