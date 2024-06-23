@@ -1,6 +1,9 @@
-install: #Перовое клонирование репозитория
-	npm ci
+install: install-deps
+	npx simple-git-hooks
 
+install-deps:
+	npm ci --legacy-peer-deps
+	
 publish: #Публикация пакета
 	npm publish --dry-run
 
