@@ -17,3 +17,6 @@ npm link
 
 ### Programme operation video
 [![asciicast](https://asciinema.org/a/ejhnMrtsgsZ6PRaP0PgCYIlNL.svg)](https://asciinema.org/a/ejhnMrtsgsZ6PRaP0PgCYIlNL)
+
+### Work with yaml file format
+[![asciicast](https://asciinema.org/a/3cyNkEQF6zuAkx79EfhiJYNpe.svg)](https://asciinema.org/a/3cyNkEQF6zuAkx79EfhiJYNpe)
