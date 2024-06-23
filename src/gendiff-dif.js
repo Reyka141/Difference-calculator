@@ -1,11 +1,6 @@
-import * as fs from 'node:fs';
 import _ from 'lodash';
+import readingFile from './parsers.js';
 
-
-const readingFile = (pathToFile) => {
-    const file = fs.readFileSync(pathToFile, 'utf8');
-    return JSON.parse(file);
-}
 
 const stringify = (value) => {
     const iter = (currentValue, depth) => {
@@ -35,6 +30,9 @@ const stringify = (value) => {
 const genDiff = (filepath1, filepath2) => {
     const file1 = readingFile(filepath1);
     const file2 = readingFile(filepath2);
+    if (file1 === undefined || file2 === undefined) {
+      return 'error of type file';
+    }
     const keysFile1 = Object.keys(file1);
     const keysFile2 = Object.keys(file2);
 
