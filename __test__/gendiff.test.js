@@ -10,19 +10,92 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const arrOfDiff1 = ['  - follow: false',
-                    '    host: hexlet.io',
-                    '  - proxy: 123.234.53.22',
-                    '  - timeout: 50',
-                    '  + timeout: 20',
-                    '  + verbose: true'];
+const arrOfDiff1 = ['    common: {',
+                    '      + follow: false',
+                    '        setting1: Value 1',
+                    '      - setting2: 200',
+                    '      - setting3: true',
+                    '      + setting3: null',
+                    '      + setting4: blah blah',
+                    '      + setting5: {',
+                    '            key5: value5',
+                    '        }',
+                    '        setting6: {',
+                    '            doge: {',
+                    '              - wow: ',
+                    '              + wow: so much',
+                    '            }',
+                    '            key: value',
+                    '          + ops: vops',
+                    '        }',
+                    '    }',
+                    '    group1: {',
+                    '      - baz: bas',
+                    '      + baz: bars',
+                    '        foo: bar',
+                    '      - nest: {',
+                    '            key: value',
+                    '        }',
+                    '      + nest: str',
+                    '    }',
+                    '  - group2: {',
+                    '        abc: 12345',
+                    '        deep: {',
+                    '            id: 45',
+                    '        }',
+                    '    }',
+                    '  + group3: {',
+                    '        deep: {',
+                    '            id: {',
+                    '                number: 45',
+                    '            }',
+                    '        }',
+                    '        fee: 100500',
+                    '    }'];
 
-const arrOfDiff2 = ['  + follow: false',
-                    '    host: hexlet.io',
-                    '  + proxy: 123.234.53.22',
-                    '  - timeout: 20',
-                    '  + timeout: 50',
-                    '  - verbose: true'];
+const arrOfDiff2 = ['    common: {',
+                    '      - follow: false',
+                    '        setting1: Value 1',
+                    '      + setting2: 200',
+                    '      - setting3: null',
+                    '      + setting3: true',
+                    '      - setting4: blah blah',
+                    '      - setting5: {',
+                    '            key5: value5',
+                    '        }',
+                    '        setting6: {',
+                    '            doge: {',
+                    '              - wow: so much',
+                    '              + wow: ',
+                    '            }',
+                    '            key: value',
+                    '          - ops: vops',
+                    '        }',
+                    '    }',
+                    '    group1: {',
+                    '      - baz: bars',
+                    '      + baz: bas',
+                    '        foo: bar',
+                    '      - nest: str',
+                    '      + nest: {',
+                    '            key: value',
+                    '        }',
+
+                    '    }',
+                    '  + group2: {',
+                    '        abc: 12345',
+                    '        deep: {',
+                    '            id: 45',
+                    '        }',
+                    '    }',
+                    '  - group3: {',
+                    '        deep: {',
+                    '            id: {',
+                    '                number: 45',
+                    '            }',
+                    '        }',
+                    '        fee: 100500',
+                    '    }'];
 let pathToFile1;
 let pathToFile2;
 let pathToFile3;
@@ -32,8 +105,8 @@ let resultOfDiff2;
 beforeAll(() => {
     pathToFile1 = getFixturePath('file1.json');
     pathToFile2 = getFixturePath('file2.json');
-    pathToFile3 = getFixturePath('file3.yml');
-    pathToFile4 = getFixturePath('file4.yml');
+    pathToFile3 = getFixturePath('file1.yml');
+    pathToFile4 = getFixturePath('file2.yml');
     resultOfDiff1 = ['{', ...arrOfDiff1, `}`].join('\n');
     resultOfDiff2 = ['{', ...arrOfDiff2, `}`].join('\n');
   });
