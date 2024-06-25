@@ -20,3 +20,6 @@ npm link
 
 ### Work with yaml file format
 [![asciicast](https://asciinema.org/a/3cyNkEQF6zuAkx79EfhiJYNpe.svg)](https://asciinema.org/a/3cyNkEQF6zuAkx79EfhiJYNpe)
+
+### Work with recursive comparison
+[![asciicast](https://asciinema.org/a/VKvAyWskXfSGv1Dub4vDJVS9f.svg)](https://asciinema.org/a/VKvAyWskXfSGv1Dub4vDJVS9f)
