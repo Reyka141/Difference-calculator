@@ -30,16 +30,18 @@ const creatObjOfDiff = (file1, file2) => {
   return objOfDiff;
 }
 
-const genDiff = (filepath1, filepath2) => {
-    const obj1 = readingFile(filepath1);
-    const obj2 = readingFile(filepath2);
-    if (obj1 === undefined || obj2 === undefined) {
-      return 'error of type file';
-    }
+const genDiff = (filepath1, filepath2, format = 'stylish') => {
+  const obj1 = readingFile(filepath1);
+  const obj2 = readingFile(filepath2);
+  if (obj1 === undefined || obj2 === undefined) {
+    return 'error of type file';
+  }
     
-    const result = creatObjOfDiff(obj1, obj2);
-
+  const result = creatObjOfDiff(obj1, obj2);
+  if (format === 'stylish') {
     return stylish(result);
+  }
+  return stylish(result);
 };
 
 export default genDiff;
