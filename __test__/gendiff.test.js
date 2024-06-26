@@ -4,11 +4,13 @@ import genDiff from '../index.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import fs from 'node:fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 const arrOfDiff1 = ['    common: {',
                     '      + follow: false',
@@ -130,6 +132,7 @@ let resultOfDiff1;
 let resultOfDiff2;
 let resultPlainFromat1;
 let resultPlainFromat2;
+let resultJsonFormat;
 beforeAll(() => {
     pathToFile1 = getFixturePath('file1.json');
     pathToFile2 = getFixturePath('file2.json');
@@ -139,6 +142,7 @@ beforeAll(() => {
     resultOfDiff2 = ['{', ...arrOfDiff2, `}`].join('\n');
     resultPlainFromat1 = arrOfPlainFormat1.join('\n');
     resultPlainFromat2 = arrOfPlainFormat2.join('\n');
+    resultJsonFormat = readFile('resultJson.json');
   });
 
 // test('test function readingFile', () => {
@@ -162,3 +166,11 @@ test('test genDiff to work with plain format', () => {
 
   expect(genDiff(pathToFile2, 'invalidformat', 'plain')).toBe('error of type file');
 });
+
+test('test genDiff to work with json format', () => {
+  expect(genDiff(pathToFile1, pathToFile2, 'json')).toEqual(resultJsonFormat);
+
+  expect(genDiff(pathToFile2, 'invalidformat', 'json')).toBe('error of type file');
+});
+
+
