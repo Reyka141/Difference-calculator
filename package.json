@@ -10,7 +10,7 @@
     "pre-push": "make lint"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --colors"
   },
   "repository": {
     "type": "git",
