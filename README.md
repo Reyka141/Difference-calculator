@@ -7,6 +7,7 @@ Compares the first file with the second and outputs the result.
 
 ```bash
 npm link
+make install
 ```
 
 ### Hexlet tests and linter status:
