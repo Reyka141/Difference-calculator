@@ -7,28 +7,25 @@ const creatObjOfDiff = (file1, file2) => {
   const keysFile2 = Object.keys(file2);
 
   const keys = _
-  .union(keysFile1, keysFile2)
-  .sort();
+    .union(keysFile1, keysFile2)
+    .sort();
 
   const objOfDiff = keys.reduce((acc, key) => {
     if (!Object.hasOwn(file1, key)) {
-        acc = { ...acc, [`+ ${key}`]: file2[key]};
-    } else if (!Object.hasOwn(file2, key)) {
-        acc = { ...acc, [`- ${key}`]: file1[key]};
-    } else if (_.isObject(file1[key]) && _.isObject(file2[key])) {
-        acc = { ...acc, [`  ${key}`]: creatObjOfDiff(file1[key], file2[key])}; 
-    } else if (file1[key] !== file2[key]) {
-        acc = { ...acc, [`- ${key}`]: file1[key]};
-        acc = {... acc, [`+ ${key}`]: file2[key]};
-    } else {
-        acc = { ...acc, [`  ${key}`]: file1[key]};
+      return { ...acc, [`+ ${key}`]: file2[key] };
+    } if (!Object.hasOwn(file2, key)) {
+      return { ...acc, [`- ${key}`]: file1[key] };
+    } if (_.isObject(file1[key]) && _.isObject(file2[key])) {
+      return { ...acc, [`  ${key}`]: creatObjOfDiff(file1[key], file2[key]) };
+    } if (file1[key] !== file2[key]) {
+      return { ...acc, [`- ${key}`]: file1[key], [`+ ${key}`]: file2[key] };
     }
-   
-    return acc;
+
+    return { ...acc, [`  ${key}`]: file1[key] };
   }, {});
 
   return objOfDiff;
-}
+};
 
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const obj1 = readingFile(filepath1);
@@ -36,9 +33,9 @@ const genDiff = (filepath1, filepath2, format = 'stylish') => {
   if (obj1 === undefined || obj2 === undefined) {
     return 'error of type file';
   }
-    
+
   const result = creatObjOfDiff(obj1, obj2);
-  
+
   return whichFormat(result, format);
 };
 
