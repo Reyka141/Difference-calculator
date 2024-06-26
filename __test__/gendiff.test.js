@@ -96,12 +96,40 @@ const arrOfDiff2 = ['    common: {',
                     '        }',
                     '        fee: 100500',
                     '    }'];
+const arrOfPlainFormat1 = [ 
+  "Property 'common.follow' was added with value: false",
+  "Property 'common.setting2' was removed",
+  "Property 'common.setting3' was updated. From true to null",
+  "Property 'common.setting4' was added with value: 'blah blah'",
+  "Property 'common.setting5' was added with value: [complex value]",
+  "Property 'common.setting6.doge.wow' was updated. From '' to 'so much'",
+  "Property 'common.setting6.ops' was added with value: 'vops'",
+  "Property 'group1.baz' was updated. From 'bas' to 'bars'",
+  "Property 'group1.nest' was updated. From [complex value] to 'str'",
+  "Property 'group2' was removed",
+  "Property 'group3' was added with value: [complex value]"
+];
+const arrOfPlainFormat2 = [ 
+  "Property 'common.follow' was removed",
+  "Property 'common.setting2' was added with value: 200",
+  "Property 'common.setting3' was updated. From null to true",
+  "Property 'common.setting4' was removed",
+  "Property 'common.setting5' was removed",
+  "Property 'common.setting6.doge.wow' was updated. From 'so much' to ''",
+  "Property 'common.setting6.ops' was removed",
+  "Property 'group1.baz' was updated. From 'bars' to 'bas'",
+  "Property 'group1.nest' was updated. From 'str' to [complex value]",
+  "Property 'group2' was added with value: [complex value]",
+  "Property 'group3' was removed"
+];
 let pathToFile1;
 let pathToFile2;
 let pathToFile3;
 let pathToFile4;
 let resultOfDiff1;
 let resultOfDiff2;
+let resultPlainFromat1;
+let resultPlainFromat2;
 beforeAll(() => {
     pathToFile1 = getFixturePath('file1.json');
     pathToFile2 = getFixturePath('file2.json');
@@ -109,6 +137,8 @@ beforeAll(() => {
     pathToFile4 = getFixturePath('file2.yml');
     resultOfDiff1 = ['{', ...arrOfDiff1, `}`].join('\n');
     resultOfDiff2 = ['{', ...arrOfDiff2, `}`].join('\n');
+    resultPlainFromat1 = arrOfPlainFormat1.join('\n');
+    resultPlainFromat2 = arrOfPlainFormat2.join('\n');
   });
 
 // test('test function readingFile', () => {
@@ -116,22 +146,19 @@ beforeAll(() => {
 //     expect(readingFile(getFixturePath('file1.json'))).toEqual(JSON.parse(file1));
 // });
 
-test('test genDiff to work with json format', () => {
+test('test genDiff to work with stylish format', () => {
     expect(genDiff(pathToFile1, pathToFile2)).toBe(resultOfDiff1);
 
-    expect(genDiff(pathToFile2, pathToFile1)).toBe(resultOfDiff2);
+    expect(genDiff(pathToFile4, pathToFile1)).toBe(resultOfDiff2);
 
     expect(genDiff(pathToFile2, 'invalidformat')).toBe('error of type file');
 });
 
-test('test genDiff to work with yml format', () => {
-  expect(genDiff(pathToFile3, pathToFile4)).toBe(resultOfDiff1);
 
-  expect(genDiff(pathToFile4, pathToFile3)).toBe(resultOfDiff2);
-});
+test('test genDiff to work with plain format', () => {
+  expect(genDiff(pathToFile1, pathToFile2, 'plain')).toBe(resultPlainFromat1);
 
-test('test genDiff to work with yml and json format', () => {
-  expect(genDiff(pathToFile1, pathToFile4)).toBe(resultOfDiff1);
+  expect(genDiff(pathToFile4, pathToFile3, 'plain')).toBe(resultPlainFromat2);
 
-  expect(genDiff(pathToFile2, pathToFile3)).toBe(resultOfDiff2);
+  expect(genDiff(pathToFile2, 'invalidformat', 'plain')).toBe('error of type file');
 });
