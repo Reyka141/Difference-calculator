@@ -23,3 +23,6 @@ npm link
 
 ### Work with recursive comparison
 [![asciicast](https://asciinema.org/a/VKvAyWskXfSGv1Dub4vDJVS9f.svg)](https://asciinema.org/a/VKvAyWskXfSGv1Dub4vDJVS9f)
+
+### Work program with --format plain
+[![asciicast](https://asciinema.org/a/kGy9qExyrhHSOANvlCMtje72L.svg)](https://asciinema.org/a/kGy9qExyrhHSOANvlCMtje72L)
