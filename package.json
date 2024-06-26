@@ -1,5 +1,5 @@
 {
-  "name": "@hexlet/difference-calculator",
+  "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Compares the first .json file with the second and outputs the result",
   "bin": {
