@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import readingFile from './parsers.js';
-import stylish from '../src/stylish.js';
+import whichFormat from './formatters/index.js';
 
 const creatObjOfDiff = (file1, file2) => {
   const keysFile1 = Object.keys(file1);
@@ -38,10 +38,8 @@ const genDiff = (filepath1, filepath2, format = 'stylish') => {
   }
     
   const result = creatObjOfDiff(obj1, obj2);
-  if (format === 'stylish') {
-    return stylish(result);
-  }
-  return stylish(result);
+  
+  return whichFormat(result, format);
 };
 
 export default genDiff;
