@@ -26,3 +26,6 @@ npm link
 
 ### Work program with --format plain
 [![asciicast](https://asciinema.org/a/kGy9qExyrhHSOANvlCMtje72L.svg)](https://asciinema.org/a/kGy9qExyrhHSOANvlCMtje72L)
+
+### Work program with --format json
+[![asciicast](https://asciinema.org/a/zkXofvrMioNtM2TzpPzSzJO8v.svg)](https://asciinema.org/a/zkXofvrMioNtM2TzpPzSzJO8v)
