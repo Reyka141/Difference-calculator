@@ -42,7 +42,7 @@ test('test genDiff to work with stylish format', () => {
 test('test genDiff to work with plain format', () => {
   expect(genDiff(pathToFile1, pathToFile2, 'plain')).toBe(resultPlainFromat);
 
-  expect(genDiff(pathToFile4, pathToFile4, 'plain')).toBe(resultPlainFromat);
+  expect(genDiff(pathToFile3, pathToFile4, 'plain')).toBe(resultPlainFromat);
 
   expect(genDiff(pathToFile2, 'invalidformat', 'plain')).toBe('error of type file');
 });
