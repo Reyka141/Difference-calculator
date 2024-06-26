@@ -14,4 +14,5 @@ const readingFile = (pathToFile) => {
     return undefined;
 }
 
+
 export default readingFile;
