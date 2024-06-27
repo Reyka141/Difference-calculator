@@ -1,20 +1,15 @@
 import yaml from 'js-yaml';
-import fs from 'node:fs';
-import path from 'path';
 
-const getFileName = (file) => fs.readFileSync(path.resolve(file), 'utf8');
-
-const readingFile = (pathToFile) => {
-  const extname = path.extname(pathToFile);
-  switch (extname) {
+const readingFile = (pathToFile, format) => {
+  switch (format) {
     case '.json':
-      return JSON.parse(getFileName(pathToFile));
+      return JSON.parse(pathToFile);
     case '.yml':
-      return yaml.load(getFileName(pathToFile));
+      return yaml.load(pathToFile);
     case '.yaml':
-      return yaml.load(getFileName(pathToFile));
+      return yaml.load(pathToFile);
     default:
-      return undefined;
+      throw new Error(`Unknown extname: '${format}'!`);
   }
 };
 
