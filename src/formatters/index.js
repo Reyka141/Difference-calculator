@@ -1,16 +1,18 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
-import json from './json.js';
 
-const whichFormat = (objOfDiff, format) => {
-  if (format === 'plain') {
-    return plain(objOfDiff);
+const whichFormat = (objOfDiff, format = 'stylish') => {
+  switch (format) {
+    case 'plain':
+      return plain(objOfDiff);
+    case 'stylish':
+      return stylish(objOfDiff);
+    case 'json':
+      return JSON.stringify(objOfDiff);
+    default:
+      console.log(`Format not supported ${format}`);
   }
-  if (format === 'json') {
-    return json(objOfDiff);
-  }
-
-  return stylish(objOfDiff);
+  return undefined;
 };
 
 export default whichFormat;
