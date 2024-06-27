@@ -2,16 +2,20 @@ import yaml from 'js-yaml';
 import fs from 'node:fs';
 import path from 'path';
 
+const getFileName = (file) => fs.readFileSync(path.resolve(file), 'utf8');
+
 const readingFile = (pathToFile) => {
-  const fullPath = path.resolve(pathToFile);
-  if (path.extname(fullPath) === '.json') {
-    const file = fs.readFileSync(fullPath, 'utf8');
-    return JSON.parse(file);
-  } if (path.extname(fullPath) === '.yml' || path.extname(fullPath) === '.yaml') {
-    const file = fs.readFileSync(fullPath, 'utf8');
-    return yaml.load(file);
+  const extname = path.extname(pathToFile);
+  switch (extname) {
+    case '.json':
+      return JSON.parse(getFileName(pathToFile));
+    case '.yml':
+      return yaml.load(getFileName(pathToFile));
+    case '.yaml':
+      return yaml.load(getFileName(pathToFile));
+    default:
+      return undefined;
   }
-  return undefined;
 };
 
 export default readingFile;
