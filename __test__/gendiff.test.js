@@ -35,7 +35,7 @@ test('to work with plain format', () => {
   expect(genDiff(pathToFile2, 'invalidformat', 'plain')).toBe('error of type file');
 });
 
-test('test genDiff with json format', () => {
+test(' genDiff json format', () => {
   expect(genDiff(pathToFile1, pathToFile2, 'json')).toEqual(resultJsonFormat);
 
   expect(genDiff(pathToFile2, 'invalidformat', 'json')).toBe('error of type file');
