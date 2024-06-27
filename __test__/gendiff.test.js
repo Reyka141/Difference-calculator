@@ -19,7 +19,7 @@ const resultPlainFromat = readFile('result_plain.txt');
 const resultStylishFromat = readFile('result_stylish.txt');
 const resultJsonFormat = readFile('result_json.txt');
 
-test('test genDiff to work with stylish format', () => {
+test('work with stylish format', () => {
   expect(genDiff(pathToFile1, pathToFile2)).toBe(resultStylishFromat);
 
   expect(genDiff(pathToFile3, pathToFile4)).toBe(resultStylishFromat);
@@ -27,7 +27,7 @@ test('test genDiff to work with stylish format', () => {
   expect(genDiff(pathToFile2, 'invalidformat')).toBe('error of type file');
 });
 
-test('test genDiff to work with plain format', () => {
+test('to work with plain format', () => {
   expect(genDiff(pathToFile1, pathToFile2, 'plain')).toBe(resultPlainFromat);
 
   expect(genDiff(pathToFile3, pathToFile4, 'plain')).toBe(resultPlainFromat);
@@ -35,7 +35,7 @@ test('test genDiff to work with plain format', () => {
   expect(genDiff(pathToFile2, 'invalidformat', 'plain')).toBe('error of type file');
 });
 
-test('test genDiff to work with json format', () => {
+test('test genDiff with json format', () => {
   expect(genDiff(pathToFile1, pathToFile2, 'json')).toEqual(resultJsonFormat);
 
   expect(genDiff(pathToFile2, 'invalidformat', 'json')).toBe('error of type file');
