@@ -10,9 +10,8 @@ const whichFormat = (objOfDiff, format = 'stylish') => {
     case 'json':
       return JSON.stringify(objOfDiff);
     default:
-      console.log(`Format not supported ${format}`);
+      return console.log(`Format not supported ${format}`);
   }
-  return undefined;
 };
 
 export default whichFormat;
