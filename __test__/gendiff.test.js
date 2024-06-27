@@ -41,6 +41,6 @@ test('genDiff test json format', () => {
   expect(genDiff(pathToFile2, 'invalidformat.txt', 'json')).toBe('error of type file');
 });
 
-test('test with invalid format', () => {
+test('run test -f invalid', () => {
   expect(genDiff(pathToFile1, pathToFile2, 'yml')).toBe(undefined);
 });
