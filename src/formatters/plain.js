@@ -21,13 +21,16 @@ const plain = (objOfDiff) => {
       const pathToKey = (objKey.length === 0) ? transformKey : objKey.concat('.', transformKey);
 
       if (key.startsWith('+ ') && previousKey !== forComparisonBefore) {
-        acc.push(`Property '${pathToKey}' was added with value: ${formatValue(value)}`);
-      } else if (key.startsWith('- ') && secondKey === forComparisonAfter) {
-        acc.push(`Property '${pathToKey}' was updated. From ${formatValue(value)} to ${formatValue(secondValue)}`);
-      } else if (key.startsWith('- ')) {
-        acc.push(`Property '${pathToKey}' was removed`);
-      } else if (_.isObject(value)) {
-        acc.push(...iter(value, pathToKey));
+        return [...acc, `Property '${pathToKey}' was added with value: ${formatValue(value)}`];
+      }
+      if (key.startsWith('- ') && secondKey === forComparisonAfter) {
+        return [...acc, `Property '${pathToKey}' was updated. From ${formatValue(value)} to ${formatValue(secondValue)}`];
+      }
+      if (key.startsWith('- ')) {
+        return [...acc, `Property '${pathToKey}' was removed`];
+      }
+      if (_.isObject(value)) {
+        return [...acc, ...iter(value, pathToKey)];
       }
       return acc;
     }, []);
