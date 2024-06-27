@@ -10,7 +10,7 @@ const plain = (objOfDiff) => {
 
     const result = entries.reduce((acc, currentKey, index, arr) => {
       const [key, value] = currentKey;
-      const transformKey = key.slice(2);
+      const transformKey = key.startsWith('+ ') || key.startsWith('- ') ? key.slice(2) : key;
 
       const forComparisonAfter = `+ ${transformKey}`;
       const forComparisonBefore = `- ${transformKey}`;
