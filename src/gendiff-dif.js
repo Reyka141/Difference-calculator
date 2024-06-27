@@ -16,18 +16,18 @@ const creatObjOfDiff = (file1, file2) => {
     } if (!Object.hasOwn(file2, key)) {
       return { ...acc, [`- ${key}`]: file1[key] };
     } if (_.isObject(file1[key]) && _.isObject(file2[key])) {
-      return { ...acc, [`  ${key}`]: creatObjOfDiff(file1[key], file2[key]) };
+      return { ...acc, [`${key}`]: creatObjOfDiff(file1[key], file2[key]) };
     } if (file1[key] !== file2[key]) {
       return { ...acc, [`- ${key}`]: file1[key], [`+ ${key}`]: file2[key] };
     }
 
-    return { ...acc, [`  ${key}`]: file1[key] };
+    return { ...acc, [`${key}`]: file1[key] };
   }, {});
 
   return objOfDiff;
 };
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
+const genDiff = (filepath1, filepath2, format) => {
   const obj1 = readingFile(filepath1);
   const obj2 = readingFile(filepath2);
   if (obj1 === undefined || obj2 === undefined) {
