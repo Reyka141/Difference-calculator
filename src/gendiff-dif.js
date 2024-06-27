@@ -6,9 +6,7 @@ const creatObjOfDiff = (file1, file2) => {
   const keysFile1 = Object.keys(file1);
   const keysFile2 = Object.keys(file2);
 
-  const keys = _
-    .union(keysFile1, keysFile2)
-    .sort();
+  const keys = _.sortBy(_.union(keysFile1, keysFile2));
 
   const objOfDiff = keys.reduce((acc, key) => {
     if (!Object.hasOwn(file1, key)) {
