@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import readingFile from './parsers.js';
+import readingFile from './parsers/parsers.js';
 import whichFormat from './formatters/index.js';
 
 const creatObjOfDiff = (file1, file2) => {
